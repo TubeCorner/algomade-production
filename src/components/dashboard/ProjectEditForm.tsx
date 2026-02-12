@@ -43,7 +43,10 @@ export default function ProjectEditForm({
 
       toast.success("✅ Project updated successfully!");
       setEditing(false);
-      onUpdated?.({ name, description });
+      onUpdated?.({
+  name,
+  description: description ?? undefined,
+});
     } catch (err: any) {
       console.error("❌ Project update failed:", err);
       toast.error(err.message || "Something went wrong");
