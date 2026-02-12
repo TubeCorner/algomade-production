@@ -72,13 +72,13 @@ export default function KeywordControls({
       setLastSource("ai");
 
       onKeywordsUpdate(
-        kws.map((kw) => ({
-          id: crypto.randomUUID(),
-          keyword: kw,
-          source: "ai",
-          created_at: new Date().toISOString(),
-        }))
-      );
+  kws.map((kw: string) => ({
+    id: crypto.randomUUID(),
+    keyword: kw,
+    source: "ai",
+    created_at: new Date().toISOString(),
+  }))
+);
 
       /* Fetch YT Trend Data */
       const trendRes = await fetch("/api/keywords/trends", {
