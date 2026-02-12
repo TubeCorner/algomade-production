@@ -112,10 +112,10 @@ const fetchProjects = useCallback(async () => {
     setProjects(safeProjects);
 
     // Only auto-select once
-    setSelectedProject((prev) => {
-      if (prev) return prev;
-      return safeProjects.length ? safeProjects[0] : null;
-    });
+    setSelectedProject((prev: typeof selectedProject) => {
+  if (prev) return prev;
+  return safeProjects.length ? safeProjects[0] : null;
+});
 
   } catch (err) {
     console.error("Fetch projects error:", err);
