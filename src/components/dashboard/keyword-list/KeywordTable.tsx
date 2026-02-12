@@ -9,6 +9,7 @@ interface KeywordTableProps {
   keywords: any[];
   trendData: Record<string, any>;
   chartData: Record<string, any>;
+  sortByOpportunity: boolean;
 
   onToggleSortOpportunity: () => void;
   onExportCSV: () => void;
