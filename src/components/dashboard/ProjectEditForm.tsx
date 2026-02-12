@@ -25,7 +25,7 @@ export default function ProjectEditForm({
   const [editing, setEditing] = useState(false);
 
   async function handleUpdate() {
-    if (!name.trim() && !description.trim()) {
+    if (!name?.trim() && !description?.trim()) {
       toast.error("Please provide at least one field to update");
       return;
     }
