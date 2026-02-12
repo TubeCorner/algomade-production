@@ -40,10 +40,11 @@
   ".next/types/**/*.ts"
 ],
   "exclude": [
-    "node_modules",
-    ".next",
-    "scripts",
-    "scripts/**",
-    "scripts/worker/**"
-  ]
+  "node_modules",
+  ".next",
+  "scripts",
+  "scripts/**",
+  "scripts/worker/**",
+  "src/supabase/functions"
+]
 }
