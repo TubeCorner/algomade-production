@@ -142,12 +142,12 @@ export default function KeywordControls({
     setLastSource("youtube");
 
     onKeywordsUpdate(
-      kws.map((kw) => ({
-        id: crypto.randomUUID(),
-        keyword: kw,
-        source: "youtube",
-        created_at: new Date().toISOString(),
-      }))
+      kws.map((kw: string) => ({
+  id: crypto.randomUUID(),
+  keyword: kw,
+  source: "youtube",
+  created_at: new Date().toISOString(),
+}))
     );
 
     /* Fetch Trends */
