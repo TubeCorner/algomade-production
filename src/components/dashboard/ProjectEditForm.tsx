@@ -20,12 +20,15 @@ export default function ProjectEditForm({
   onUpdated,
 }: ProjectEditFormProps) {
   const [name, setName] = useState(initialName);
-  const [description, setDescription] = useState(initialDescription);
+  const [name, setName] = useState<string>(initialName ?? "");
+const [description, setDescription] = useState<string>(
+  initialDescription ?? ""
+);
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState(false);
 
   async function handleUpdate() {
-    if (!name?.trim() && !description?.trim()) {
+    if (!name.trim() && !description.trim()) {
       toast.error("Please provide at least one field to update");
       return;
     }
@@ -45,7 +48,7 @@ export default function ProjectEditForm({
       setEditing(false);
       onUpdated?.({
   name,
-  description: description ?? undefined,
+  description,
 });
     } catch (err: any) {
       console.error("❌ Project update failed:", err);
