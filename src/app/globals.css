@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================================= */
+/* 🅰 AlgoMade Global Font Variables & Branding               */
+/* ========================================================= */
+
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-grotesk: "Space Grotesk", sans-serif;
+
+  --am-primary: #F5B14B;
+  --am-primary-hover: #ffca6f;
+
+  --am-blue: #3ea6ff;
+  --am-purple: #8860ff;
+
+  --am-bg-1: #0B0F19;
+  --am-bg-2: #121826;
+  --am-bg-3: #1E2638;
+
+  --am-border: rgba(255, 255, 255, 0.08);
+  --am-card: rgba(255, 255, 255, 0.03);
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+h1, h2, h3, h4, h5, .section-title {
+  font-family: var(--font-grotesk);
+}
+
+/* ========================================================= */
+/* ORIGINAL SHADCN BASE                                      */
+/* ========================================================= */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  [data-theme="dark"] {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth transitions */
+html, body {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              fill 0.3s ease,
+              stroke 0.3s ease;
+}
+
+/* ========================================================= */
+/* ANIMATIONS — Fade Up / Reveal                             */
+/* ========================================================= */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 0.8s ease-out;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================= */
+/* CARD & FLOATING EFFECTS                                   */
+/* ========================================================= */
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 12px 30px rgba(0,0,0,0.25);
+}
+
+.float-mockup {
+  animation: mockupFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes mockupFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+.mockup-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.mockup-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 60px rgba(15,23,42,0.7);
+}
+
+/* ========================================================= */
+/* FLOATING HERO ICONS                                       */
+/* ========================================================= */
+
+.float-icon {
+  position: absolute;
+  opacity: 0.16;
+  font-size: 1.5rem;
+  filter: drop-shadow(0px 0px 12px rgba(148,163,184,0.5));
+  pointer-events: none;
+}
+
+.float-icon-1 { top: 18%; left: 10%; animation: floatIcon1 9s ease-in-out infinite alternate; }
+.float-icon-2 { top: 32%; right: 12%; animation: floatIcon2 10s ease-in-out infinite alternate; }
+.float-icon-3 { bottom: 18%; left: 18%; animation: floatIcon3 11s ease-in-out infinite alternate; }
+.float-icon-4 { bottom: 24%; right: 20%; animation: floatIcon2 12s ease-in-out infinite alternate; }
+
+@keyframes floatIcon1 {
+  0% { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(6px,-8px,0); }
+}
+@keyframes floatIcon2 {
+  0% { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-8px,-4px,0); }
+}
+@keyframes floatIcon3 {
+  0% { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(4px,8px,0); }
+}
+
+/* ========================================================= */
+/* TESTIMONIAL CARDS                                         */
+/* ========================================================= */
+
+.testimonial-card {
+  background: rgba(15,23,42,0.9);
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.25);
+  transition: 0.25s ease;
+}
+
+.testimonial-card-active {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(96,165,250,0.9);
+  box-shadow: 0 0 40px rgba(56,189,248,0.35);
+  background: radial-gradient(circle at top, rgba(56,189,248,0.32), rgba(15,23,42,0.95));
+}
+
+.testimonial-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  background: radial-gradient(circle at top, rgba(56,189,248,0.25), transparent 65%);
+  opacity: 0;
+  transition: 0.25s ease;
+}
+.testimonial-card-active .testimonial-glow {
+  opacity: 1;
+}
+
+/* ========================================================= */
+/* SCROLL PROGRESS BAR                                       */
+/* ========================================================= */
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background-image: linear-gradient(to right, #facc15, #f97316, #3b82f6, #a855f7);
+  z-index: 40;
+}
+
+/* ========================================================= */
+/* LIVE TREND PULSE BADGE                                    */
+/* ========================================================= */
+
+.live-badge {
+  position: relative;
+  padding-left: 12px;
+  text-align: center;
+}
+
+.live-badge::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px; height: 8px;
+  transform: translateY(-50%);
+  background: #ff4668;
+  border-radius: 50%;
+  animation: pulse 1.3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.85) translateY(-50%); opacity: 0.7; }
+  50% { transform: scale(1.25) translateY(-50%); opacity: 1; }
+  100% { transform: scale(0.85) translateY(-50%); opacity: 0.7; }
+}
+
+/* ========================================================= */
+/* ⭐ PREMIUM LIVE MARQUEE — Apple-Level Smooth              */
+/* ========================================================= */
+
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  white-space: nowrap;
+
+  /* This padding ensures track starts "off screen" smoothly */
+  padding-left: 100%;
+  animation: marqueeMove 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.marquee-item:hover {
+  transform: scale(1.06);
+  opacity: 1;
+}
+
+/* Hover pause */
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Glow background */
+.marquee-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(80,150,255,0.12), transparent 70%);
+  filter: blur(22px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Left & right fade masks */
+.marquee-mask-left,
+.marquee-mask-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 120px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.marquee-mask-left {
+  left: 0;
+  background: linear-gradient(to right, #0b0f19, transparent);
+}
+
+.marquee-mask-right {
+  right: 0;
+  background: linear-gradient(to left, #0b0f19, transparent);
+}
+
+/* Fixed infinite smooth sliding */
+@keyframes marqueeMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+/* Neon hover outline for demo section */
+.neon-demo-card {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.neon-demo-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 28px rgba(255, 200, 80, 0.12);
+}
+
+/* Input glow */
+.neon-input {
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: border-color 0.3s ease;
+}
+.neon-input:hover {
+  border-color: rgba(255,200,80,0.45);
+}

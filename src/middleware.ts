@@ -1,0 +1,62 @@
+import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+
+// 🚫 NEVER use service role in middleware
+
+export default withAuth(
+  async function middleware(req: NextRequest) {
+    const { pathname } = req.nextUrl;
+
+    const token = req.nextauth?.token;
+    if (!token) return NextResponse.next();
+
+    if (!pathname.startsWith("/pricing")) return NextResponse.next();
+
+    try {
+      // Use ONLY ANON KEY on the edge
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, // ← Safe for middleware
+        {
+          auth: {
+            autoRefreshToken: false,
+            persistSession: false,
+          },
+        }
+      );
+
+      const userId = token.sub;
+      if (!userId) return NextResponse.next();
+
+      // ✔ RLS reads allowed — no admin key needed
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("plan")
+        .eq("id", userId)
+        .maybeSingle();
+
+      const plan = profile?.plan || "free";
+
+      if (["pro", "elite"].includes(plan)) {
+        return NextResponse.redirect(new URL("/dashboard", req.url));
+      }
+
+      return NextResponse.next();
+    } catch (err) {
+      console.error("Middleware error:", err);
+      return NextResponse.next();
+    }
+  },
+  {
+    pages: {
+      signIn: "/",
+    },
+  }
+);
+
+export const config = {
+  matcher: ["/dashboard/:path*", "/pricing/:path*"],
+};
+
