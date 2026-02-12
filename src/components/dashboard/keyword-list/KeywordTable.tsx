@@ -9,8 +9,10 @@ interface KeywordTableProps {
   keywords: any[];
   trendData: Record<string, any>;
   chartData: Record<string, any>;
-  sortByOpportunity: boolean;
 
+  fetchChartData: (kw: string) => void;
+
+  sortByOpportunity: boolean;
   onToggleSortOpportunity: () => void;
   onExportCSV: () => void;
 
@@ -24,6 +26,13 @@ interface KeywordTableProps {
   selectedIds: string[];
   setSelectedIds: (ids: string[]) => void;
 
+  aiResults: any;
+  videoPacks: any;
+  expandedPackFor: any;
+  setExpandedPackFor: (v: any) => void;
+  aiLoading: boolean;
+  setAiLoading: (v: boolean) => void;
+
   increment: any;
   reached: boolean;
   usage: number;
@@ -31,9 +40,10 @@ interface KeywordTableProps {
 
   projectId: string;
   onDelete: (ids: string[]) => Promise<void>;
-  fetchChartData: (kw: string) => void;
-}
 
+  setVideoPacks: any;
+  setAiResults: any;
+}
 /* ---------------- Component ---------------- */
 export default function KeywordTable({
   keywords,
