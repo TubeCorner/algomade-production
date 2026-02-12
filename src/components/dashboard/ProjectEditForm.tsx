@@ -20,7 +20,6 @@ export default function ProjectEditForm({
   onUpdated,
 }: ProjectEditFormProps) {
   const [name, setName] = useState(initialName);
-  const [name, setName] = useState<string>(initialName ?? "");
 const [description, setDescription] = useState<string>(
   initialDescription ?? ""
 );
