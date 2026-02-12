@@ -5,7 +5,6 @@ export default function DashboardPage() {
   const trendData = getTrendData(); // Assuming this is a function that fetches your trend data
 
   // Log the trendData to the console with the updated message
-  console.log("PAGE trends", trendData); // Updated log
 
   return <DashboardPageContent />;
 }

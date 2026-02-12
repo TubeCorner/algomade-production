@@ -82,50 +82,56 @@ toast.custom(
   const [trendData, setTrendData] = useState<Record<string, any> | null>(null);
   const [velocityCache, setVelocityCache] = useState<Record<string, any> | null>(null);
 
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   console.log("SESSION DEBUG:", session);
 
   /* -------------------------------------------------------------------------- */
-  /* 📌 Fetch Projects                                                         */
   /* -------------------------------------------------------------------------- */
-  const fetchProjects = useCallback(async () => {
-  if (!session?.user?.id) return; // 🔒 HARD GUARD
+/* 📌 Fetch Projects                                                         */
+/* -------------------------------------------------------------------------- */
+
+const fetchProjects = useCallback(async () => {
+  if (status !== "authenticated") return;
 
   try {
     setLoadingSidebar(true);
 
     const res = await fetch("/api/projects", {
-      credentials: "include", // ✅ Next 15 safe
+      credentials: "include",
       cache: "no-store",
     });
 
     if (!res.ok) {
-      const txt = await res.text();
-      throw new Error(txt || "Failed to fetch projects");
+      console.warn("Projects API failed");
+      return;
     }
 
     const data = await res.json();
-    setProjects(Array.isArray(data) ? data : []);
+    const safeProjects = Array.isArray(data) ? data : [];
 
-    if (data?.length && !selectedProject) {
-      setSelectedProject(data[0]);
-    }
+    setProjects(safeProjects);
+
+    // Only auto-select once
+    setSelectedProject((prev) => {
+      if (prev) return prev;
+      return safeProjects.length ? safeProjects[0] : null;
+    });
+
   } catch (err) {
     console.error("Fetch projects error:", err);
-    toast.error("Unable to load projects");
   } finally {
     setLoadingSidebar(false);
   }
-}, [session?.user?.id, selectedProject]);
+}, [status]);
+useEffect(() => {
+  if (status !== "authenticated") return;
 
-  useEffect(() => {
-  console.log("SESSION IN LAYOUT:", session);
+  console.log("SESSION STATUS:", status);
+  console.log("CALLING fetchProjects");
 
-  if (session?.user?.id) {
-    console.log("CALLING fetchProjects");
-    fetchProjects();
-  }
-}, [session?.user?.id, fetchProjects]);
+  fetchProjects();
+}, [status, fetchProjects]);
+
   /* -------------------------------------------------------------------------- */
   /* 📌 Refresh Trends                                                         */
   /* -------------------------------------------------------------------------- */

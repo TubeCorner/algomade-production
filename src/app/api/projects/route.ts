@@ -12,16 +12,12 @@ export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
-    console.log("SESSION:", session);
-
     const userId = session?.user?.id;
 
     if (!userId) {
       console.log("❌ No userId in session");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
-    console.log("Fetching projects for user:", userId);
 
     const { data, error } = await supabaseAdmin
       .from("projects")
@@ -36,8 +32,6 @@ export async function GET() {
         { status: 500 }
       );
     }
-
-    console.log("Projects found:", data?.length);
 
     return NextResponse.json(data ?? [], { status: 200 });
   } catch (err: any) {
