@@ -246,15 +246,17 @@ return (
             </aside>
           </div>
         )}
-{/* 📱 Mobile Notice */}
-<div className="md:hidden px-4 pt-3">
-  <div className="bg-indigo-500/10 border border-indigo-400/20 text-indigo-200 text-xs rounded-lg px-4 py-2 text-center">
-    💻 AlgoMade works best on desktop for advanced keyword analytics.
-  </div>
-</div>
+
         {/* Main Workspace */}
           <main className="flex-1 w-full px-4 sm:px-6 md:px-8 lg:px-12 py-10 transition-all duration-300">
             <div className="max-w-[1400px] mx-auto space-y-8">
+
+              {/* 📱 Desktop Recommendation Banner */}
+<div className="md:hidden">
+  <div className="bg-indigo-500/10 border border-indigo-400/20 text-indigo-200 text-xs sm:text-sm rounded-xl px-4 py-3 text-center">
+    💻 AlgoMade works best on desktop for advanced keyword analytics and smoother workflow.
+  </div>
+</div>
               {/* Header */}
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 shadow-lg">
                 <div>
