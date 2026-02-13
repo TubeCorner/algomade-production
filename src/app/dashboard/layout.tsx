@@ -83,7 +83,6 @@ toast.custom(
   const [velocityCache, setVelocityCache] = useState<Record<string, any> | null>(null);
 
   const { data: session, status } = useSession();
-  console.log("SESSION DEBUG:", session);
 
   /* -------------------------------------------------------------------------- */
   /* -------------------------------------------------------------------------- */
