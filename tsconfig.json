@@ -15,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": false,
     "forceConsistentCasingInFileNames": true,
     "plugins": [
@@ -33,18 +33,19 @@
     }
   },
   "include": [
-  "next-env.d.ts",
-  "src/**/*.ts",
-  "src/**/*.tsx",
-  "src/**/*.d.ts",
-  ".next/types/**/*.ts"
-],
+    "next-env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
-  "node_modules",
-  ".next",
-  "scripts",
-  "scripts/**",
-  "scripts/worker/**",
-  "src/supabase/functions"
-]
+    "node_modules",
+    ".next",
+    "scripts",
+    "scripts/**",
+    "scripts/worker/**",
+    "src/supabase/functions"
+  ]
 }

@@ -5,6 +5,7 @@ import { SupabaseProvider } from "@/providers/SupabaseProvider";
 import SessionLoader from "@/components/shared/SessionLoader";
 import Navbar from "@/components/shared/Navbar";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 // Fonts
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -45,6 +46,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 expand
                 duration={4000}
               />
+              {/* ✅ ADD THIS LINE */}
+      <Analytics />
             </SessionLoader>
           </SupabaseProvider>
         </SessionProviderWrapper>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { track } from "@vercel/analytics/react";
 
 interface KeywordControlsProps {
   selectedProject: string | { id: string };
@@ -79,6 +80,10 @@ export default function KeywordControls({
     created_at: new Date().toISOString(),
   }))
 );
+track("keywords_generated", {
+  count: kws.length,
+  source: "ai",
+});
 
       /* Fetch YT Trend Data */
       const trendRes = await fetch("/api/keywords/trends", {
@@ -140,6 +145,10 @@ export default function KeywordControls({
     setGenerated(kws);
     setSelected([]);
     setLastSource("youtube");
+    track("keywords_generated", {
+  count: kws.length,
+  source: "youtube",
+});
 
     onKeywordsUpdate(
       kws.map((kw: string) => ({

@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { track } from "@vercel/analytics/server";
+
 
 /* -------------------------------------------------------------------------- */
 /* 🟢 GET — Fetch all projects for the current user                            */
@@ -81,7 +83,11 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-
+// ✅ Analytics Event
+track("project_created", {
+  userId,
+  projectId: data.id,
+});
     return NextResponse.json(data, { status: 201 });
   } catch (err: any) {
     console.error("❌ POST /projects fatal error:", err);

@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { DashboardProvider } from "@/contexts/DashboardContext";
 import toast, { type Toast } from "react-hot-toast";
+import { track } from "@vercel/analytics/react";
 
 /* -------------------------------------------------------------------------- */
 /* 💼 Dashboard Layout                                                        */
@@ -135,14 +136,23 @@ useEffect(() => {
   /* 📌 Refresh Trends                                                         */
   /* -------------------------------------------------------------------------- */
   const refreshTrends = useCallback(async (projectId: string) => {
-    try {
-      const res = await fetch(`/api/keywords/trends?project_id=${projectId}`);
-      const json = await res.json();
-      if (res.ok) setTrendData(json.trends || {});
-    } catch (err) {
-      console.error("Trend fetch error:", err);
+  try {
+    const res = await fetch(`/api/keywords/trends?project_id=${projectId}`);
+    const json = await res.json();
+
+    if (res.ok) {
+      setTrendData(json.trends || {});
+
+      // ✅ Track only on success
+      track("trends_fetched", {
+        projectId,
+        keywordCount: Object.keys(json.trends || {}).length,
+      });
     }
-  }, []);
+  } catch (err) {
+    console.error("Trend fetch error:", err);
+  }
+}, []);
 
   /* -------------------------------------------------------------------------- */
   /* 📌 Refresh Velocity                                                       */
