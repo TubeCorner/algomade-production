@@ -54,8 +54,10 @@ export default function HomePage() {
   ];
 
   const trendingKeywords = [
-    "youtube automation",
-    "ai tools 2025",
+    "low competition niche ideas",
+"how to grow from 1k to 10k subs",
+"faceless channel ideas",
+"youtube shorts growth 2026",
     "study motivation",
     "thumbnail ideas",
     "keyword research",
@@ -164,21 +166,21 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
         {/* HERO TEXT */}
 <div className="relative max-w-4xl mx-auto text-center z-[10]">
   <p className="text-amber-300 text-sm mb-4 fade-up">
-    Built for serious YouTube creators
+    For creators stuck under 5,000 subscribers
   </p>
 
   <h1 className="text-4xl md:text-6xl font-bold leading-tight fade-up [animation-delay:0.1s]">
-    Stop Guessing Your
+    Stuck Under 10k Subscribers?
     <br className="hidden md:block" />
-    Next YouTube Video
+    Stop Guessing What to Post.
   </h1>
 
   <p className="text-gray-300 max-w-2xl mx-auto mt-6 text-lg fade-up [animation-delay:0.2s]">
-    AlgoMade ranks keywords by{" "}
+    AlgoMade finds low-competition topics with rising search velocity{" "}
     <span className="text-white font-semibold">real opportunity</span>
-    {" "}— so you know what to create{" "}
+    {" "}— so smaller creators can publish before bigger channels dominate them.{" "}
     <span className="text-white font-semibold">now</span>,
-    not what worked last year.
+    Designed specifically for growing YouTube channels.
   </p>
 
   {/* PRIMARY CTA — EMAIL FIRST */}
@@ -188,7 +190,7 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email for early access"
+        placeholder="Enter email to start free"
         className="px-5 py-3 rounded-lg bg-[#111827] border border-white/10 text-white w-full sm:w-[320px] focus:outline-none focus:border-amber-400"
       />
 
@@ -210,7 +212,7 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
   }}
   className="px-8 py-3 text-lg rounded-lg bg-amber-400 text-black font-semibold hover:bg-amber-300 transition-all"
 >
-  Get Early Access
+  Start Free
 </button>
 
     </div>
@@ -432,8 +434,8 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
           </h2>
 
           <p className="text-gray-400 max-w-2xl mx-auto text-lg fade-up [animation-delay:0.1s]">
-            The same analytical power big channels use — without the
-            complexity.
+          Find topics with rising search velocity before big channels dominate them.
+          
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-16 fade-up [animation-delay:0.2s]">
@@ -477,146 +479,124 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
       </section>
 
       {/* ============================================================= */}
-      {/* TESTIMONIALS                                                 */}
-      {/* ============================================================= */}
-      <section className="py-24 bg-[#111827] text-center relative overflow-hidden reveal">
-        <h2 className="text-3xl font-bold mb-6">What Creators Say</h2>
-        <p className="text-gray-400 mb-10 text-sm">
-          Real feedback from creators growing faster with AlgoMade 🚀
-        </p>
+{/* FOUNDING CREATORS INVITE                                       */}
+{/* ============================================================= */}
+<section className="py-24 bg-[#111827] text-center relative overflow-hidden reveal">
+  <div className="max-w-4xl mx-auto px-6">
 
-        <div className="relative max-w-5xl mx-auto px-6 fade-up [animation-delay:0.15s]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {visibleIndexes.map((idx, pos) => {
-              const t = testimonials[idx];
-              const active = pos === 1;
+    <h2 className="text-3xl font-bold mb-6">
+      We’re Building This With 20 Serious Creators
+    </h2>
 
-              return (
-                <div
-                  key={idx}
-                  className={`testimonial-card relative p-6 rounded-xl ${
-                    active
-                      ? "testimonial-card-active"
-                      : "testimonial-card-muted"
-                  }`}
-                >
-                  <div className="testimonial-glow" />
-                  <div className="flex items-center gap-3 mb-4">
-                    <Image
-                      src={t.avatar}
-                      alt={t.name}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                    <div>
-                      <h3 className="text-lg font-semibold">{t.name}</h3>
-                      <p className="text-gray-400 text-xs">{t.role}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 text-sm">“{t.feedback}”</p>
-                </div>
-              );
-            })}
-          </div>
+    <p className="text-gray-400 text-lg mb-10">
+      AlgoMade is currently in focused beta for creators under 10k subscribers.
+      We're onboarding a small group who want early access, direct founder support,
+      and lifetime discounted pricing.
+    </p>
 
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveTestimonial(i)}
-                className={`h-2 w-2 rounded-full transition-all ${
-                  i === activeTestimonial ? "bg-blue-400 w-4" : "bg-gray-600/60"
-                }`}
-              />
-            ))}
-          </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+
+      {[
+        {
+          icon: "⚡",
+          title: "Direct Access",
+          desc: "Talk directly with the founder and influence the roadmap."
+        },
+        {
+          icon: "💎",
+          title: "Lifetime Founder Pricing",
+          desc: "Lock in the lowest price before public rollout."
+        },
+        {
+          icon: "🚀",
+          title: "Early Growth Advantage",
+          desc: "Use trend velocity tools before competitors catch up."
+        }
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="p-8 rounded-2xl bg-[#0F172A]/70 border border-white/10 hover:border-amber-400/40 transition-all"
+        >
+          <div className="text-4xl mb-4">{item.icon}</div>
+          <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
+          <p className="text-gray-400 text-sm">{item.desc}</p>
         </div>
-      </section>
+      ))}
+
+    </div>
+
+    <div className="mt-12">
+      <button
+        onClick={() => signIn("google")}
+        className="px-8 py-3 text-lg rounded-xl bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg shadow-blue-600/20 transition-all"
+      >
+        🚀 Become a Founding Creator
+      </button>
+    </div>
+
+    <p className="text-gray-500 text-sm mt-6">
+      Limited to 20 active creators.
+    </p>
+
+  </div>
+</section>
 
       {/* Divider */}
       <div className="h-[1px] w-full bg-white/5 my-24" />
       
 
 {/* ============================================================= */}
-{/* SIDE-BY-SIDE COMPARISON — AlgoMade vs Alternatives (F2-A)    */}
+{/* WHO ALGOMADE IS PERFECT FOR                                   */}
 {/* ============================================================= */}
 <section className="py-24 bg-[#0F172A] relative overflow-hidden reveal">
   <div className="absolute inset-0 bg-gradient-to-b from-[#101624] to-[#0B0F19] opacity-60" />
 
   <div className="relative max-w-6xl mx-auto px-6 text-center">
     <h2 className="text-3xl font-bold mb-6 fade-up">
-      How AlgoMade Stacks Up
+      Who AlgoMade Is Perfect For
     </h2>
 
     <p className="text-gray-400 text-lg max-w-2xl mx-auto fade-up [animation-delay:0.1s]">
-      A clean, modern alternative to old-school creator tools.
+      Designed specifically for growing creators who need clarity, not complexity.
     </p>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14 fade-up [animation-delay:0.2s]">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-14 fade-up [animation-delay:0.2s]">
+
       {[
         {
-          name: "TubeBuddy",
-          pros: ["Basic keyword ideas", "Browser extension tools"],
-          cons: ["Outdated UI", "No AI insights", "Weak trend tracking"],
+          icon: "🚀",
+          title: "Creators Under 10k Subs",
+          desc: "Find topics you can actually rank for before bigger channels dominate them."
         },
         {
-          name: "VidIQ",
-          pros: ["Decent keyword data", "Some AI features"],
-          cons: ["Slower updates", "Confusing dashboards", "Limited prediction"],
+          icon: "🎬",
+          title: "Shorts Creators",
+          desc: "Spot rising trends early and publish during peak velocity."
         },
         {
-          name: "AlgoMade",
-          highlight: true,
-          pros: [
-            "AI keyword scoring",
-            "Trend prediction engine",
-            "Thumbnail idea generator",
-            "Lightning-fast modern UI",
-          ],
+          icon: "📚",
+          title: "Educational Channels",
+          desc: "Discover high-demand learning topics with lower competition."
         },
-      ].map((tool, i) => (
+        {
+          icon: "🤖",
+          title: "Faceless AI Channels",
+          desc: "Generate scalable niche ideas backed by real search data."
+        }
+      ].map((item, i) => (
         <div
           key={i}
-          className={`
-            p-8 rounded-2xl backdrop-blur-sm border
-            transition-all hover:scale-[1.02]
-            ${
-              tool.highlight
-                ? "bg-[#1A2638]/80 border-blue-400/40 shadow-lg shadow-blue-500/10"
-                : "bg-[#111827]/60 border-white/10"
-            }
-          `}
+          className="p-8 rounded-2xl bg-[#111827]/60 border border-white/10 hover:border-amber-400/40 transition-all"
         >
-          <h3
-            className={`text-xl font-semibold mb-4 ${
-              tool.highlight ? "text-blue-300" : "text-gray-200"
-            }`}
-          >
-            {tool.name}
-          </h3>
-
-          <div className="text-left">
-            {tool.pros.map((p, k) => (
-              <p key={k} className="text-green-400 text-sm mb-2">
-                ✓ {p}
-              </p>
-            ))}
-
-            {tool.cons &&
-              tool.cons.map((c, k) => (
-                <p key={k} className="text-red-400 text-sm mb-2">
-                  ✗ {c}
-                </p>
-              ))}
-          </div>
+          <div className="text-4xl mb-4">{item.icon}</div>
+          <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
+          <p className="text-gray-400 text-sm">{item.desc}</p>
         </div>
       ))}
+
     </div>
   </div>
 </section>
-
       {/* ============================================================= */}
       {/* FINAL CTA                                                    */}
       {/* ============================================================= */}
@@ -632,7 +612,7 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
           </h2>
 
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-10 fade-up [animation-delay:0.1s]">
-            Join 1,000+ creators using AlgoMade to find viral ideas, boost CTR,
+            Join our first 50 founding creators.
             and stay ahead — without guesswork.
           </p>
 
