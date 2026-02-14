@@ -166,7 +166,7 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
         {/* HERO TEXT */}
 <div className="relative max-w-4xl mx-auto text-center z-[10]">
   <p className="text-amber-300 text-sm mb-4 fade-up">
-    For creators stuck under 5,000 subscribers
+    For creators stuck under 10,000 subscribers
   </p>
 
   <h1 className="text-4xl md:text-6xl font-bold leading-tight fade-up [animation-delay:0.1s]">
@@ -177,7 +177,7 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
 
   <p className="text-gray-300 max-w-2xl mx-auto mt-6 text-lg fade-up [animation-delay:0.2s]">
     AlgoMade finds low-competition topics with rising search velocity{" "}
-    <span className="text-white font-semibold">real opportunity</span>
+    <span className="text-white font-semibold"> </span>
     {" "}— so smaller creators can publish before bigger channels dominate them.{" "}
     <span className="text-white font-semibold">now</span>,
     Designed specifically for growing YouTube channels.
