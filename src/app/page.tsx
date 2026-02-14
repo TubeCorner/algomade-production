@@ -175,11 +175,11 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
   </h1>
 
   <p className="text-gray-300 max-w-2xl mx-auto mt-6 text-lg fade-up [animation-delay:0.2s]">
-    AlgoMade finds low-competition topics with rising search velocity{" "}
+  AlgoMade shows you low-competition keywords 
+with rising search demand{" "}
     <span className="text-white font-semibold"> </span>
-    {" "}— so smaller creators can publish before bigger channels dominate them.{" "}
+    {" "}— before big channels find them.{" "}
     <span className="text-white font-semibold">now</span>,
-    Designed specifically for growing YouTube channels.
   </p>
 
   {/* PRIMARY CTA — EMAIL FIRST */}
