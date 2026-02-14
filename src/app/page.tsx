@@ -166,13 +166,12 @@ const [emailSubmitted, setEmailSubmitted] = useState(false);
         {/* HERO TEXT */}
 <div className="relative max-w-4xl mx-auto text-center z-[10]">
   <p className="text-amber-300 text-sm mb-4 fade-up">
-    For creators stuck under 10,000 subscribers
   </p>
 
   <h1 className="text-4xl md:text-6xl font-bold leading-tight fade-up [animation-delay:0.1s]">
-    Stuck Under 10k Subscribers?
+    Find YouTube Topics 
     <br className="hidden md:block" />
-    Stop Guessing What to Post.
+    That Actually Rank
   </h1>
 
   <p className="text-gray-300 max-w-2xl mx-auto mt-6 text-lg fade-up [animation-delay:0.2s]">
